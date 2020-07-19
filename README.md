@@ -1,12 +1,12 @@
 # [SecureSocket](https://www.unrealengine.com/marketplace/en-US/product/securesocket) - Documentation
 ## Table of content
- 1. [Blueprint](#blueprint)
-	 1.1. [TCP](#tcp)
-	 1.2. [UDP](#udp)
-2. [C++](#c)
-	2.1. [TCP](#tcp)
-	2.2. [UDP](#udp)
- 3. [Support](#support)
+ 1. [Blueprint](#1-blueprint)
+	 1.1. [TCP](#11-tcp)
+	 1.2. [UDP](#12-udp)
+2. [C++](#2-c)
+	2.1. [TCP](#21-tcp)
+	2.2. [UDP](#22-udp)
+ 3. [Support](#3-support)
 
 ## 1. Blueprint
 ### 1.1. TCP
