@@ -138,7 +138,7 @@ if (TcpSocket->DowngradeFromSsl())
 }
 else
 {
-	// The connection wasn't encrypted.
+    // The connection wasn't encrypted.
 }
 ``` 
 ### 2.2.5. Sending messages
@@ -203,5 +203,7 @@ private:
 ```
 ### 2.3.4. DTLS
 DTLS is used like UDP. When you send a message with `bUseDtls` set to true, a DTLS handshake is established with the server and stored in the socket for the specific IP/Port combination. Messages exchanged with this host will then be encrypted and decrypted. You can handle the lifetime of these DTLS sessions with `bool UUdpSocket::ForgetDtlsConnection(const FString & Host, const int32 Port)` and `void UUdpSocket::SetDtlsConnectionAutoCloseDelay(const float Delay)`.
+| :information_source:|Setting the auto close delay to a negative number (< 0) disable the delay and the DTLS connection will never be destroyed unless the socket is destroyed or `ForgetDtlsConnection()` is called.|
+|:---|:---|
 # 3. Support
 If you need help, have a feature request, experience troubles or detected a bug, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+SecureSocket@gmail.com?subject=Secure%20Socket%20-%20).
