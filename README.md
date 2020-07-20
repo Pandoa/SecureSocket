@@ -186,19 +186,19 @@ public:
     {
         const FString StringData = USocketLibrary::ToString_Binary(Data, EStringEncoding::ANSICHAR);
         UE_LOG(LogTemp, Log, TEXT("New message from %s:%d: %s."), *Host, Port, *StringData);
-	}
+    }
 	
-	// Setup UDP receive example 
-	void SetupSocket()
-	{
-		UdpSocket->OnMessage.AddDynamic(this, &UMyClass::OnMessage);
-		UdpSocket->SetListeningPort(502);
-	}
+    // Setup UDP receive example 
+    void SetupSocket()
+    {
+        UdpSocket->OnMessage.AddDynamic(this, &UMyClass::OnMessage);
+        UdpSocket->SetListeningPort(502);
+    }
 
 private:
     // Our socket previously created
-	UPROPERTY()
-	UUdpSocket* UdpSocket;
+    UPROPERTY()
+    UUdpSocket* UdpSocket;
 };
 ```
 ### 2.3.4. DTLS
