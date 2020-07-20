@@ -61,6 +61,7 @@ As for TCP, there is a node to create an UDP socket:
 
 ### 1.2.2. Sending messages
 You can send data through your UDP socket with the `Send` or `Send Binary` nodes. You can use DTLS by setting `Use Dtls` to true:
+
 ![Send data UDP](https://github.com/Pandoa/SecureSocket/blob/master/Images/SendDataUdp.png?raw=true)
 
 ### 1.2.3. Receiving messages
@@ -77,6 +78,18 @@ DTLS is used like UDP. When you send a message with `Use Dtls` set to true, a DT
 
 # 2. C++
 ## 2.1. TCP
+### MyClassTCP.h
+```cpp
+```
+### MyClassTCP.cpp
+```cpp
+```
 ## 2.2. UDP
+### MyClassUDP.h
+```cpp
+```
+### MyClassUDP.cpp
+```cpp
+```
 # 3. Support
 If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+SecureSocket@gmail.com?subject=Secure%20Socket%20-%20).
