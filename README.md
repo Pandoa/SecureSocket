@@ -146,7 +146,7 @@ else
 To send data, you have to call the `Send()` function. It is overloaded to accept either a `const FString&` or a `const TArray<uint8>&`:
 ```cpp
 // You can get it programmatically.
-const FString		StringData = TEXT("Hello there!");
+const FString       StringData = TEXT("Hello there!");
 const TArray<uint8> BinaryData = { 0, 1, 2, 3, 4, 5 };
 
 TcpSocket->Send(StringData, /* bIsAnsi */ true);
