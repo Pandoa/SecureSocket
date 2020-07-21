@@ -100,6 +100,7 @@ To handle status change or messages, you must bind `UFUNCTION()` functions to th
 |`OnClosed`|`void Func()`|Called when the connection is closed.|
 |`OnUpgradeSuccess`|`void Func()`|Called when the connection has been upgraded to SSL/TLS.|
 |`OnUpgradeFailed`|`void Func(const FString& Error)`|Called when the connection failed to upgrade to SSL/TLS.|
+
 As these events are `Dynamic Multicast Delegates`, you have to bind them with `AddDynamic()`:
 ```cpp
 TcpSocket->OnMessage        .AddDynamic(this, &UMyClass::OnMessageTCP);
