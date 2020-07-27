@@ -85,7 +85,7 @@ To be able to use Secure Socket  in C++, you have to add it to your project's bu
 
 Edit `<your_project>/Source/<your_project>/<your_project>.Build.cs` and add:
 ```cpp
-PrivateDependencyModuleNames.AddRange(new string[] { `SecureSocket` });
+PrivateDependencyModuleNames.AddRange(new string[] { "SecureSocket" });
 ```
 | :warning:|For the includes to work with your IDE, you have to regenerate project's files by right-clicking on `<your_project>.uproject` and selecting `Regenerate <IDE> project files`.|
 |:---|:---|
