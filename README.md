@@ -82,6 +82,7 @@ DTLS is used like UDP. When you send a message with `Use Dtls` set to true, a DT
 # 2. C++
 ## 2.1. Adding the `SecureSocket` Module
 To be able to use Secure Socket  in C++, you have to add it to your project's build configuration.
+
 Edit `<your_project>/Source/<your_project>/<your_project>.Build.cs` and add:
 ```cpp
 PrivateDependencyModuleNames.AddRange(new string[] { `SecureSocket` });
