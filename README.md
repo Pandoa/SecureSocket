@@ -1,3 +1,4 @@
+
 # [SecureSocket](https://www.unrealengine.com/marketplace/en-US/product/securesocket) - Documentation
 ![Secure socket features](https://github.com/Pandoa/SecureSocket/blob/master/Images/Show0.png?raw=true)
 # Table of Content
@@ -5,9 +6,10 @@
     1.1. [TCP](#11-tcp)</br>
     1.2. [UDP](#12-udp)</br>
 2. [C++](#2-c)</br>
-    2.1. [Includes](#21-includes)</br>
-    2.2. [TCP](#22-tcp)</br>
-    2.3. [UDP](#23-udp)</br>
+    2.1. [`SecureSocket` Module](#21-adding-the-securesocket-module)</br>
+    2.2. [Includes](#22-includes)</br>
+    2.3. [TCP](#23-tcp)</br>
+    2.4. [UDP](#24-udp)</br>
  3. [Support](#3-support)
 # 1. Blueprint
 ## 1.1. TCP
@@ -78,21 +80,27 @@ DTLS is used like UDP. When you send a message with `Use Dtls` set to true, a DT
 |:---|:---|
 
 # 2. C++
-## 2.1. Includes
+## 2.1. Adding the `SecureSocket` Module
+To be able to use Secure Socket  in C++, you have to add it to your project's build configuration.
+Edit `<your_project>/Source/<your_project>/<your_project>.Build.cs` and add:
+```cpp
+PrivateDependencyModuleNames.AddRange(new string[] { `SecureSocket` });
+```
+| :warning:|For the includes to work with your IDE, you have to regenerate project's files by right-clicking on `<your_project>.uproject` and selecting `Regenerate <IDE> project files`.|
+|:---|:---|
+## 2.2. Includes
 Secure socket has 3 files to include:
 ```cpp
 #include "TcpSocket.h"           // For TCP sockets
 #include "UdpSocket.h"           // For UDP sockets
 #include "SecureSocketLibrary.h" // For MD5, SHA, AES and conversion
 ```
-| :warning:|Make sure you have added the `SecureSocket` module to your project's dependencies with `PrivateDependencyModuleNames.AddRange(new string[] { "SecureSocket" });` in `<project_name>/Source/<project_name>/<project_name>.Build.cs` for the includes to work.|
-|:---|:---|
-## 2.2. TCP
-### 2.2.1. Creating a TCP socket
+## 2.3. TCP
+### 2.3.1. Creating a TCP socket
 ```cpp
 UTcpSocket* const TcpSocket = UTcpSocket::CreateTcpSocket();
 ```
-### 2.2.2. Listening to events
+### 2.3.2. Listening to events
 To handle status change or messages, you must bind `UFUNCTION()` functions to the following events:
 |Event Name|Signature|Description|
 |:---|:---|:--|
@@ -112,12 +120,12 @@ TcpSocket->OnConnectionError.AddDynamic(this, &UMyClass::OnConnectionError);
 TcpSocket->OnUpgradeSuccess .AddDynamic(this, &UMyClass::OnConnectionUpgradedTCP);
 TcpSocket->OnUpgradeFailed  .AddDynamic(this, &UMyClass::OnConnectionUpgradFailedTCP);
 ```
-### 2.2.3. Connecting to the server
+### 2.3.3. Connecting to the server
 To connect, simply call the `Connect()` function:
 ```cpp
 TcpSocket->Connect(TEXT("my.server.com"), 500);
 ```
-### 2.2.4. Upgrading the connection to SSL/TLS
+### 2.3.4. Upgrading the connection to SSL/TLS
 Once your socket is connected, you can upgrade the connection to an encrypted connection with `UpgradeToSsl`:
 ```cpp
 if (TcpSocket->UpgradeToSsl())
@@ -144,7 +152,7 @@ else
     // The connection wasn't encrypted.
 }
 ``` 
-### 2.2.5. Sending messages
+### 2.3.5. Sending messages
 To send data, you have to call the `Send()` function. It is overloaded to accept either a `const FString&` or a `const TArray<uint8>&`:
 ```cpp
 // You can get it programmatically.
@@ -154,17 +162,17 @@ const TArray<uint8> BinaryData = { 0, 1, 2, 3, 4, 5 };
 TcpSocket->Send(StringData, /* bIsAnsi */ true);
 TcpSocket->Send(BinaryData);
 ```
-### 2.2.6. Closing the connection
+### 2.3.6. Closing the connection
 To cleanly close the connection, call the `CloseConnection()` function:
 ```cpp
 TcpSocket->CloseConnection();
 ```
-## 2.3. UDP
-### 2.3.1. Creating an UDP socket
+## 2.4. UDP
+### 2.4.1. Creating an UDP socket
 ```cpp
 UUdpocket* const UdpSocket = UUdpSocket::CreateUdpSocket();
 ```
-### 2.3.2. Sending messages
+### 2.4.2. Sending messages
 To send data, you have to call the `Send()` function. It is overloaded to accept either a `const FString&` or a `const TArray<uint8>&`:
 ```cpp
 const FString ServerAddress = TEXT("my.server.com");
@@ -176,7 +184,7 @@ const TArray<uint8> BinaryData = { 0, 1, 2, 3, 4, 5}
 UdpSocket->Send(ServerAddress, ServerPort, StringData, false /* bIsANSI */, false /* bUseDTLS */);
 UdpSocket->Send(ServerAddress, ServerPort, BinaryData, /* bUseDTLS */ false);
 ```
-### 2.3.3. Receiving messages
+### 2.4.3. Receiving messages
 To receive messages, you have to listen on a port with `SetListeningPort()` and bind a function to the `OnMessage` event:
 ```cpp
 UCLASS()
@@ -204,7 +212,7 @@ private:
     UUdpSocket* UdpSocket;
 };
 ```
-### 2.3.4. DTLS
+### 2.4.4. DTLS
 DTLS is used like UDP. When you send a message with `bUseDtls` set to true, a DTLS handshake is established with the server and stored in the socket for the specific IP/Port combination. Messages exchanged with this host will then be encrypted and decrypted. You can handle the lifetime of these DTLS sessions with `bool UUdpSocket::ForgetDtlsConnection(const FString & Host, const int32 Port)` and `void UUdpSocket::SetDtlsConnectionAutoCloseDelay(const float Delay)`.
 | :information_source:|Setting the auto close delay to a negative number (< 0) disable the delay and the DTLS connection will never be destroyed unless the socket is destroyed or `ForgetDtlsConnection()` is called.|
 |:---|:---|
