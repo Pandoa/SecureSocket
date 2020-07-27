@@ -85,6 +85,8 @@ Secure socket has 3 files to include:
 #include "UdpSocket.h"           // For UDP sockets
 #include "SecureSocketLibrary.h" // For MD5, SHA, AES and conversion
 ```
+| :warning:|Make sure you have added the `SecureSocket` module to your project's dependencies with `PrivateDependencyModuleNames.AddRange(new string[] { "SecureSocket" });` in `<project_name>/Source/<project_name>/<project_name>.Build.cs` for the includes to work.|
+|:---|:---|
 ## 2.2. TCP
 ### 2.2.1. Creating a TCP socket
 ```cpp
