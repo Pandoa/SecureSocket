@@ -87,7 +87,7 @@ Edit `<your_project>/Source/<your_project>/<your_project>.Build.cs` and add:
 ```cpp
 PrivateDependencyModuleNames.AddRange(new string[] { "SecureSocket" });
 ```
-| :warning:|For the includes to work with your IDE, you have to regenerate project's files by right-clicking on `<your_project>.uproject` and selecting `Regenerate <IDE> project files`.|
+| :warning:|For the includes to work with your IDE, you have to regenerate the project's files by right-clicking on `<your_project>.uproject` and selecting `Regenerate <IDE> project files`.|
 |:---|:---|
 ## 2.2. Includes
 Secure socket has 3 files to include:
