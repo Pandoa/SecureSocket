@@ -139,7 +139,7 @@ if (TcpSocket->UpgradeToSsl())
 else
 {
     // An internal error occurred and the handshake wasn't able to start.
-    // Additional information are available in the output log.
+    // Additional information is available in the output log.
 }
 ```
 You can downgrade the connection to unencrypted at any time with `DowngradeFromSsl()`:
